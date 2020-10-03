@@ -1,0 +1,326 @@
+
+
+/* Page 1 */ 
+#page1 {
+	height: 100vh; 
+}
+
+body {
+	overflow-x: hidden;
+}
+
+#touch-anywhere {
+	font-weight: 500; 
+	font-size: 1.5rem;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-top: 20px;
+	animation: MoveUpDown 1s linear infinite;
+}
+
+#logo img {
+	stroke-opacity: 0;
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 1201px) {
+	#logo {
+		
+	}
+
+	#name h1 {
+		font-size: 3.2rem;
+		margin-left: 50px;
+	}
+
+	#name h4 {
+		font-size: 2.5rem;
+		margin-left: 50px;
+	}
+} 
+
+@media only screen and (max-width: 1200px) and (min-width: 768px) {
+	#logo {
+		
+	}
+
+	#name h1 {
+		font-size: 2.9rem;
+		margin-left: 100px;
+	}
+
+	#name h4 {
+		font-size: 2.2rem;
+		margin-left: 100px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+		#logo {
+		
+	}
+
+	#name h1 {
+		margin-left: 0px;
+	}
+
+	#name h4 {
+		margin-left: 0px;
+	}
+}
+
+
+
+#paint-options {
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 20px;
+	z-index: 100;   /* Place it above canvas */ 
+	animation: MoveUpDown 1s linear 3.25;
+
+}
+
+#paint-options img {
+	width: 5vh;
+}
+
+@keyframes MoveUpDown {
+	0%, 100% {
+		margin-top: 10px;
+	}
+	50% {
+		margin-top: 30px;
+	}
+}
+
+canvas {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+}
+
+canvas, #page1 {
+	/*cursor: url("../images/CustomBrushLogo.png"), auto;*/
+
+}
+
+#page1-row {
+	top: 30%;
+	position: relative; 
+}
+
+h1, h4 {
+	margin: 0px;
+}
+
+/* Page 2 */ 
+.project-card-div {
+	display: block;
+	flex: none;
+	position: relative;
+}
+
+@media only screen and (max-width: 767px) {
+	/* Once it becomes single column add padding to bottom of projects */ 
+	.project-card-div:first-child {
+		margin-bottom: 20px;
+	}
+}
+
+
+
+
+.project-card-div img {
+	width: 80%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	border-radius: 12px;
+
+	transition: .25s ease-in-out; 	
+	transform: scale(1); 
+}
+
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 10%;
+	width: 80%;
+	height: 100%;
+	opacity: 0; 
+	transition: .25s ease-in-out; 	 
+	border-radius: 12px;
+
+}
+
+.overlay a {
+	position: absolute;
+	bottom: 0px;
+	border-radius: 12px;
+}
+
+.overlay div {
+	color: white;
+}
+
+.project-title {
+	font-weight: 1000; 
+	text-align: center;
+}
+
+.project-desc {
+	font-weight: 500; 
+	text-align: center; 
+}
+
+@media only screen and (min-width: 1651px) {
+	.project-title {
+		font-size: 3rem;
+    }
+
+	.project-desc {
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 1650px) and (min-width: 1371px) {
+	.project-title {
+		font-size: 2.25rem;
+	}
+
+	.project-desc {
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 1370px) and (min-width: 1101px) {
+	.project-title {
+		font-size: 2rem;
+	}
+	.project-desc {
+		font-size: 1rem;
+	}
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 768px) {
+	.project-title {
+		font-size: 1.5rem;
+	}
+	.project-desc {
+		font-size: 1rem;
+	}
+}
+
+/* Tablet and lower from here (768px is where it become single column) */ 
+@media only screen and (max-width: 767px) and (min-width: 631px) {
+	.project-title {
+		font-size: 3rem;
+	}
+	.project-desc {
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 630px) and (min-width: 551px) {
+	.project-title {
+		font-size: 2.5rem;
+	}
+	.project-desc {
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 550px) and (min-width: 461px) {
+	.project-title {
+		font-size: 2rem;
+	}
+	.project-desc {
+		font-size: 1.25rem;
+	}
+}
+
+@media only screen and (max-width: 460px) and (min-width: 371px){
+	.project-title {
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 370px) {
+	.project-title {
+		font-size: 1rem;
+	}
+	.project-desc {
+		font-size: .75rem;
+	}
+}
+
+
+
+.code-btn {
+	left: 0px;
+}
+
+.code-btn-only {
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0 auto;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.visit-btn {
+	right: 0px;
+}
+.project-card-div:hover .overlay {
+	opacity: 1; 
+}
+
+
+.project-card-div:hover img {
+	filter: brightness(10%);
+	transform: scale(1.1);
+}
+
+.development {
+	font-weight: 500;
+}
+
+/* Footer */ 
+
+#footer {
+	margin-top: 100px;
+}
+
+.footer-body img {
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+}
+
+.footer-body span {
+	margin-left: 10px;
+}
+
+
+.footer-item {			/* Centers Items In Footer both vertically and horizontally*/ 
+	display: flex;
+	align-items: center; 
+	justify-content: center;
+}
+
+@media only screen and (min-width: 700px) {
+	#first{
+		float: left !important;
+	}
+
+	#second{
+		text-align: center;
+	}
+
+	#third{
+		float: right !important;
+	}
+
+}; 
