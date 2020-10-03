@@ -211,13 +211,15 @@ TxtRotate.prototype.tick = function() {
    let blotches = new Blotches(); 
 
 
-	function is_touch_enabled() { 
-	    return ( 'ontouchstart' in window ) ||  
-	           ( navigator.maxTouchPoints > 0 ) ||  
-	           ( navigator.msMaxTouchPoints > 0 ); 
-	} 
-
    // -- paint options 
+
+   isOnTouch = false; 
+   window.addEventListener('touchstart', function onFirstTouch() {
+       isOnTouch = true; 
+
+       // we only need to know once that a human touched the screen, so we can stop listening now
+       window.removeEventListener('touchstart', onFirstTouch, false);
+   }, false);
 
    // -- turning painting mode on 
    $("#paintbrush-option").on("click", function() {
@@ -225,7 +227,9 @@ TxtRotate.prototype.tick = function() {
 
    		// -- register mouse down events 
    		document.addEventListener('mousedown', function(e) {
-
+      // -- after first tap hide touch-anywhere dialogue 
+      $("#touch-anywhere").remove(); 
+        
    		if(!blotches.isRunningBlotch()) {
    			ctx.moveTo(mouse.x, mouse.y); 
    			blotches.newBlotch(mouse.x, mouse.y); 
@@ -236,9 +240,8 @@ TxtRotate.prototype.tick = function() {
   		// -- or touch events if on mobile 
    		document.addEventListener('tap', function(e) {
    			
-   			console.log("HIDE"); 
    			// -- after first tap hide touch-anywhere dialogue 
-   			$("#touch-anywhere").hide(); 
+   			$("#touch-anywhere").remove(); 
 
 	   		if(!blotches.isRunningBlotch()) {
 	   			ctx.moveTo(mouse.x, mouse.y); 
@@ -248,7 +251,7 @@ TxtRotate.prototype.tick = function() {
   		}, false); 
 
   		// -- if touch enabled show the "touch anywhere" dialogue after they click brush 
-  		if(is_touch_enabled()) {
+  		if(isOnTouch) {
   			$("#touch-anywhere").show(); 
   		}
 
