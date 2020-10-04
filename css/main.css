@@ -293,6 +293,13 @@ h1, h4 {
 	margin-top: 100px;
 }
 
+/*#footer-color {
+	position: absolute;
+	bottom: 0px; 
+	height: 20vh;
+	width: 100%;
+	background-color: #6a1b9a;
+}*/
 .footer-body img {
 	height: 50px;
 	width: 50px;
