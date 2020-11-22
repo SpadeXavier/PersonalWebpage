@@ -1,2 +1,2 @@
 # PersonalWebpage
- Just my own site no big deal 
+Personal webpage to showcase projects of interest.
