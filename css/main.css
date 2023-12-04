@@ -20,7 +20,14 @@ body {
 }
 
 #logo img {
-	stroke-opacity: 0;
+	width: 253px;
+	height: 253px;
+}
+
+/* Circular border for image */ 
+.circle {
+    border: 3px solid #000; /* Example: Black border, 3px width */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional: Adds a shadow for depth */
 }
 
 @media only screen and (max-width: 1500px) and (min-width: 1201px) {
@@ -320,4 +327,4 @@ h1, h4 {
 
 }
 
-}; 
+}; 	
