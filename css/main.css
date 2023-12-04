@@ -314,25 +314,13 @@ h1, h4 {
 	margin-left: 10px;
 }
 
+
 /* For mobile */ 
+@media only screen and (max-width: 700px) {
 .footer-item {			/* Put items Items In Footer both vertically and horizontally*/ 
 	display: flex;
 	align-items: center; 
 	justify-content: center;
 }
-
-/* For large screens */ 
-@media only screen and (min-width: 700px) {
-	#first{
-		float: left !important;
-	}
-
-	#second{
-		text-align: center;
-	}
-
-	#third{
-		float: right !important;
-	}
 
 }; 
