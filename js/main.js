@@ -1,9 +1,6 @@
 $(document).ready(function() {
 
-
-  // PAGE 1 ANIMATIONS 
-
-  // -- helper functions  
+  // Text animation on cover of page
   var TxtRotate = function(el, toRotate, period) {
 	  this.toRotate = toRotate;
 	  this.el = el;
@@ -61,7 +58,20 @@ TxtRotate.prototype.tick = function() {
   css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
   document.body.appendChild(css);
 
-   // PAGE 1 PAINTING FUNCTION 
+
+   // Scroll Down Indicator 
+   let triangleDisplayDelay = 1000;
+	setTimeout(function() {
+		$('#page1').addClass('show-triangle');
+	}, triangleDisplayDelay);
+
+	// Hide the triangle when the user starts scrolling
+	$(window).on('scroll', function() {
+		$('#page1').removeClass('show-triangle');
+	});
+	
+
+   // Painting Function on Cover of Page
    var canvas = document.getElementById("myCanvas"); 
    var ctx = canvas.getContext('2d'); 
    resize(); 
@@ -166,14 +176,18 @@ TxtRotate.prototype.tick = function() {
 
    }
 
-   function getRandomColor() {
-   		var letters = '0123456789ABCDEF';
-   		var color = '#'; 
-   		for(var i = 0; i < 6; i++) {
-   			color += letters[getRandomInt(0,15)]
-   		}
-   		return color; 
-   }
+	// Define an array of predefined colors
+
+	// -- pastels 
+	// const predefinedColors = ["#fbf8cc", "#fde4cf", "#ffcfd2", "#f1c0e8", "#cfbaf0", "#a3c4f3", "#90dbf4", "#8eecf5", "#98f5e1", "#b9fbc0"]
+	// -- more pop 
+	const predefinedColors = ["#f94144", "#f3722c", "#f8961e", "#f9844a", "#f9c74f", "#90be6d", "#43aa8b", "#4d908e", "#577590", "#277da1"]
+	
+	function getRandomColor() {
+		// Select a random color from the predefined array
+		const randomIndex = Math.floor(Math.random() * predefinedColors.length);
+		return predefinedColors[randomIndex];
+	}
 
    function getRandomInt(min, max) {
    		min = Math.ceil(min); 
@@ -221,10 +235,10 @@ TxtRotate.prototype.tick = function() {
        window.removeEventListener('touchstart', onFirstTouch, false);
    }, false);
 
+	let isPaintingModeOn = false;
    // -- turning painting mode on 
    $("#paintbrush-option").on("click", function() {
-   		console.log("Painting mode: on"); 
-
+		isPaintingModeOn = true;
    		// -- register mouse down events 
    		document.addEventListener('mousedown', function(e) {
       // -- after first tap hide touch-anywhere dialogue 
@@ -264,6 +278,23 @@ TxtRotate.prototype.tick = function() {
   		$("#paint-options").remove(); 
 
    })
+
+// Function to generate a random blotch
+function generateRandomBlotch() {
+	if(!isPaintingModeOn) {
+    // Get random positions within the canvas bounds
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+
+    // Create a new blotch at the random position
+    blotches.newBlotch(x, y);
+	}
+}
+
+// Periodically generate random blotches
+var blotchTimeInterval = 5000
+const blotchInterval = setInterval(generateRandomBlotch, blotchTimeInterval); // Adjust the 2000ms (2 seconds) interval as needed
+
 
 })
 
