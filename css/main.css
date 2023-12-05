@@ -107,28 +107,13 @@ h1, h4 {
 
 /* Triangle indiciator at bottom of page 1 */ 
 
-/* #page1:after {
-    content: '';
-    position: absolute;
-    bottom: 10px; 
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent; 
-    border-right: 15px solid transparent; 
-    border-top: 15px solid #000; 
-    opacity: 0; 
-}
-*/
-
 #page1:after {
-	animation: bounce 1s ease infinite;
+	animation: bounce 10s ease infinite;
     bottom: 2rem;
     color: #000; /* Change this color as needed */
     content: '╲╱';
     font-size: 1.5rem;
-    height: 4rem;
+    height: 2rem;
     left: 50%;
     letter-spacing: -1px;
     line-height: 4rem;
@@ -138,6 +123,15 @@ h1, h4 {
     text-align: center;
     width: 6rem;
 	opacity: 0;
+}
+
+@keyframes bounce {
+    10%, 20% { /* 10% of 5s for the bounce, adjust as needed */
+        transform: translateY(-50%);
+    }
+    20%, 100% {
+        transform: translateY(0%);
+    }
 }
 
 #page1.show-triangle:after {
