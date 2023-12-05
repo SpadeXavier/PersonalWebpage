@@ -60,7 +60,7 @@ TxtRotate.prototype.tick = function() {
 
 
    // Scroll Down Indicator 
-   let triangleDisplayDelay = 1000;
+   let triangleDisplayDelay = 3000;
 	setTimeout(function() {
 		$('#page1').addClass('show-triangle');
 	}, triangleDisplayDelay);
@@ -293,6 +293,9 @@ function generateRandomBlotch() {
 
 // Periodically generate random blotches
 var blotchTimeInterval = 5000
+// -- Start with one blotch immediately 
+generateRandomBlotch();
+// -- then set interval 
 const blotchInterval = setInterval(generateRandomBlotch, blotchTimeInterval); // Adjust the 2000ms (2 seconds) interval as needed
 
 
