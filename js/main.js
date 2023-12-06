@@ -181,8 +181,9 @@ TxtRotate.prototype.tick = function() {
 	// -- pastels 
 	// const predefinedColors = ["#fbf8cc", "#fde4cf", "#ffcfd2", "#f1c0e8", "#cfbaf0", "#a3c4f3", "#90dbf4", "#8eecf5", "#98f5e1", "#b9fbc0"]
 	// -- more pop 
-	const predefinedColors = ["#f94144", "#f3722c", "#f8961e", "#f9844a", "#f9c74f", "#90be6d", "#43aa8b", "#4d908e", "#577590", "#277da1"]
-	
+	// const predefinedColors = ["#f94144", "#f3722c", "#f8961e", "#f9844a", "#f9c74f", "#90be6d", "#43aa8b", "#4d908e", "#577590", "#277da1"]
+	const predefinedColors = ["#ff7b00","#ffe300","#ff9500","#ffcc84","#ffaa00","#ffb700"]
+
 	function getRandomColor() {
 		// Select a random color from the predefined array
 		const randomIndex = Math.floor(Math.random() * predefinedColors.length);
@@ -201,25 +202,35 @@ TxtRotate.prototype.tick = function() {
    }
    // class to manage blotches 
    class Blotches {
-   		constructor() {
-   			this.blotches = []; 
-   		}
+    constructor() {
+        this.blotches = [];
+        this.maxBlotches = 10; // Maximum number of blotches before clearing
+    }
 
-   		newBlotch(x,y) {
-   			let blotch = new Blotch(x,y); 
-   			this.blotches.push(blotch);
-   			return blotch; 
-   		}
+    newBlotch(x, y) {
+        let blotch = new Blotch(x, y);
+        this.blotches.push(blotch);
+        if (this.blotches.length >= this.maxBlotches) {
+            this.clearCanvasAndRestart();
+        }
+        return blotch;
+    }
 
-   		isRunningBlotch() {
-   			for(i = 0; i < this.blotches.length; i++) {
-   				if(this.blotches[i].isRunning) {
-   					return true; 
-   				}
-   			}
-   			return false; 
-   		}
-   }
+    isRunningBlotch() {
+        for (let i = 0; i < this.blotches.length; i++) {
+            if (this.blotches[i].isRunning) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    clearCanvasAndRestart() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        this.blotches = []; // Reset the blotches array
+        // You can add any additional logic here if needed
+    }
+	}
 
 
    let blotches = new Blotches(); 
@@ -292,7 +303,7 @@ function generateRandomBlotch() {
 }
 
 // Periodically generate random blotches
-var blotchTimeInterval = 5000
+var blotchTimeInterval = 2000
 // -- Start with one blotch immediately 
 generateRandomBlotch();
 // -- then set interval 
